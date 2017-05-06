@@ -1,0 +1,172 @@
+/* materialize icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('../fonts/MaterialIcons-Regular.woff2') format('woff2'),
+    url('../fonts/MaterialIcons-Regular.woff') format('woff'),
+    url('../fonts/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 2;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+
+/* main styles */
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	background: #efebe9;
+	display: flex;
+	flex-direction: column;
+	font-family: 'Raleway', sans-serif;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+/* highlight for the intro animation */
+.mark-off {
+	background: transparent;
+	color: #263238;
+}
+
+mark {
+	background: #b2dfdb;
+}
+
+/* class to toggle visibility */
+.no-display {
+	display: none;
+}
+
+/* title display styles */
+#titleText {
+	font-family: 'Luckiest Guy', cursive;
+}
+
+#titleDivider {
+	margin-bottom: 78px;
+}
+
+#initialListButton {
+    margin-top: 25px;
+}
+
+#useStoredListButton {
+    margin-top: 25px;
+}
+
+#or {
+    margin-top: 25px;
+}
+
+
+/* student name tray styles */
+#listHeaderIcon {
+    font-size: 38px;
+}
+
+#listFeedbackArea {
+    text-align: center;
+    height: 23px;
+}
+
+#listFeedbackText {
+    margin-bottom: 0;
+}
+
+#addButtonWrapper {
+	margin-right: 15px;
+	margin-top: 15px;
+}
+
+#nameInputLineItem {
+	margin-left: 5px;
+}
+
+#nameList {
+    margin-top: 20px;
+}
+
+#addName {
+    padding-left: 14px;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 990px) {
+        #plusSign {
+            padding-right: 50px;
+            margin-left: -7px;
+        }
+}
+
+.delete-icon {
+    font-size: 24px;
+    margin-bottom: 5px;
+    margin-top: -4px;
+}
+
+.name-text {
+    line-height: 3;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.absent-text {
+    text-decoration: line-through;
+}
+
+#saveListButton {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#updateListButton {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+
+/* footer styles */
+#selectStudentWrapper {
+    left: 23px;
+    float: left;
+}
+
+footer {
+    height: 105px;
+}
