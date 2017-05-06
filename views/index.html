@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Student Selector</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<header class="page-header transparent">
+	</header>
+	<main id="start" class="valign-wrapper">
+		<ul id="slide-out" class="side-nav">
+            <li id="listHeader" class="center"><i id="listHeaderIcon" class="medium brown-text text-darken-5 material-icons">toc</i></li>
+            <li id="listFeedbackArea"><h6 id="listFeedbackText" class="teal-text"></h6></li>
+			<li id="nameInputLineItem">
+				<div id="nameInputWrapper" class="input-field inline">
+					<input type="text" placeholder="Add a name." id="addName" size="20">
+				</div>
+				<div id="addButtonWrapper" class="right">
+					<a id="addButton" onclick="handler.addStudent()" class="btn-floating waves-effect waves-light brown"><i id="plusSign" class="material-icons white-text">add</i></a>
+				</div>
+			</li>
+            <div class="divider"></div>
+			<li>
+				<ul class="collection" id="nameList">
+                    
+				</ul>
+			</li>
+			<li id="saveListButtonListItem"><a id="saveListButton" class="waves-effect waves-light btn-large teal">Save</a></li>
+			<li id="updateListButtonListItem" class="no-display"><a id="updateListButton" class="waves-effect waves-light btn-large teal">Update</a></li>
+		</ul>
+		<div class="container" id="startContent">
+			<div class="row">
+				<div class="col s12 center-align">
+					<h1 id="titleText" class="blue-grey-text text-darken-4 no-display">Student <mark id="markS" class="mark-off">S</mark><mark id="markE1" class="mark-off">e</mark><mark id="markL" class="mark-off">l</mark><mark id="markE2" class="mark-off">e</mark><mark id="markC" class="mark-off">c</mark><mark id="markT" class="mark-off">t</mark>or</h1>
+					<div id="titleDivider" class="divider transparent"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 center-align">
+					<a id="initialListButton" data-activates="slide-out" onclick="handler.initialListBuilder()" class="no-display button-collapse waves-effect waves-light btn-large teal">Create Class List</a>
+					<div id="localStoragePresentOption" class="no-display">
+					    <a id="useStoredListButton" data-activates="slide-out" onclick="handler.loadFromLocalStorage()" class="button-collapse waves-effect waves-light btn-large teal">Use Previous List</a>
+					    <h5 id="or">or</h5>
+					    <a id="initialListButton" data-activates="slide-out" onclick="handler.initialListBuilder()" class="button-collapse waves-effect waves-light btn-large teal">Create Class List</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container no-display" id="selectorContent">
+			<div class="row">
+				<div id="nameArea" class="col s12 center-align">
+					
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="page-footer brown darken-2 no-display">
+		<div class="container">
+			<div class="row">
+			    <div class="col s6">
+                    <div id="selectStudentWrapper" class="fixed-action-btn">
+                        <a id="selectStudent" onclick="handler.startSelector()" class="btn btn-large btn-floating waves-effect waves-light teal"><i class="material-icons brown-text text-lighten-5">polymer</i></a>
+                    </div>
+			        <div id="selectTapTarget" class="tap-target teal" data-activates="selectStudent">
+                        <div class="tap-target-content white-text">
+                          <h5>Start Selector</h5>
+                          <p>Select a random student.</p>
+                        </div>
+                    </div>
+			    </div>
+				<div class="col s6">
+                    <div id="editListWrapper" class="fixed-action-btn">
+                        <a id="editList" data-activates="slide-out" class="button-collapse btn btn-large btn-floating waves-effect waves-light teal"><i class="brown-text text-lighten-5 material-icons">toc</i></a>
+                    </div>
+                    <div id="editTapTarget" class="tap-target teal" data-activates="editList">
+                        <div class="tap-target-content white-text">
+                          <h5>Edit Student List</h5>
+                          <p>Make changes to your student list.</p>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+	<script type="text/javascript" src="title_animation.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
