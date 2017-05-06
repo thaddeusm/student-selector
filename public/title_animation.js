@@ -50,12 +50,6 @@ var titleHighlight = function() {
 
 }
 
-var brandingIn = function() {
-    
-    $('#brandingButton').removeClass('no-display').addClass('animated fadeIn');
-    
-}
-
 setTimeout(function() {
 	titleIn();
 }, 1000);
@@ -77,7 +71,3 @@ if (localStorage.getItem('students')) {
         titleHighlight();
     }, 4500);
 }
-
-setTimeout(function() {
-    brandingIn();
-}, 5000);
