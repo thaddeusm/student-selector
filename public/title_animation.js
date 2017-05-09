@@ -5,7 +5,7 @@ This Javascript snippet handles the animation of the title as the app loads.
 */
 
 if (localStorage.getItem('students')) {
-    $('#titleDivider').css('margin-bottom', '218px');
+    $('#titleDivider').css('margin-bottom', '274px');
 }
 
 var titleIn = function() {
@@ -25,9 +25,10 @@ var buttonIn = function() {
     if (localStorage.getItem('students')) {
         $('#titleDivider').css('margin-bottom', '0');
         $('#localStoragePresentOption').removeClass('no-display').addClass('animated fadeIn');
+        $('#initialOptions').removeClass('no-display').addClass('animated fadeIn');
     } else {
         $('#titleDivider').css('margin-bottom', '0');
-        $('#initialListButton').removeClass('no-display').addClass('animated slideInUp');
+        $('#initialOptions').removeClass('no-display').addClass('animated fadeIn');
     }
     
 
