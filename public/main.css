@@ -74,12 +74,16 @@ mark {
 }
 
 /* title display styles */
+#brandingButton {
+    margin-top: 10px;
+}
+
 #titleText {
-	font-family: 'Luckiest Guy', cursive;
+	font-family: 'Luckiest Guy';
 }
 
 #titleDivider {
-	margin-bottom: 78px;
+	margin-bottom: 196px;
 }
 
 #initialListButton {
@@ -92,6 +96,19 @@ mark {
 
 #or {
     margin-top: 25px;
+}
+
+#googleSheetsButton {
+    margin-top: 20px;
+}
+
+.modal-format {
+    width: 100%;
+    text-align: center;
+}
+
+#sheetURLInput {
+    color: #efebe9;
 }
 
 

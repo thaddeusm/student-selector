@@ -30,6 +30,7 @@ Additonal Features
 - localStorage to save created lists locally for repeated use
 - ability to mark students as `absent`, which takes their names
 out of the selection pool for the session
+- [Tabletop JS](https://github.com/jsoma/tabletop) to import student lists from Google Sheets
 
 Inspiration
 -----------

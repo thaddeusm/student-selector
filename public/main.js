@@ -12,6 +12,12 @@ var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimation
 // initiates the Materialize CSS side-navigation toggle button
 $(".button-collapse").sideNav();
 
+$('.modal').modal({
+      dismissible: false, // Modal can be dismissed by clicking outside of the modal
+      opacity: 0, // Opacity of modal background
+    }
+  );
+
 // model object that handles changes to data
 var studentList = {
     // the primary array of objects that holds student information
@@ -107,6 +113,14 @@ var studentList = {
             console.log('There are no students yet.');
         }
         
+    },
+    // pulls in student names via Tabletop from Google Sheets
+    processSheetData: function(data) {
+        data.forEach(function(item) {
+           this.addStudent(item.students);
+        }, this);
+        this.saveToLocalStorage();
+        view.displaySheetLoadedStudents();
     }
 };
 // handles interactions from the user interface to initiate data or interface changes
@@ -173,10 +187,15 @@ var handler = {
     continueSelector: function(i, randomArray) {
         view.nameAnimation(i, randomArray);
     },
-    // handle option to load previously stored student list
+    // handles option to load previously stored student list
     loadFromLocalStorage: function() {
         studentList.loadFromLocalStorage();
         view.loadFromLocalStorage();
+    },
+    // handles option to load a list from Google Sheets
+    sheetImport: function() {
+        var sheetURL = document.getElementById('sheetURLInput').value;
+        init(sheetURL);
     }
 };
 // object to hold app transitions visible to the user
@@ -217,6 +236,46 @@ var view = {
             }
              
         }
+    },
+    // transitions views after student names are loaded from Google Sheets
+    displaySheetLoadedStudents: function() {
+        // clears the list of names in the side panel
+        var nameList = document.getElementById('nameList');
+        nameList.innerHTML = '';
+        for (var i = 0; i < studentList.students.length; i++) {
+            // prints student list on the DOM with delete icons
+            var student = studentList.students[i];
+            
+            if (student.absent === false) {
+                nameList.innerHTML += '<li class="collection-item brown lighten-5"><div><span class="name-text">' + student.name + '</span><a id="' + i + '" href="#" class="secondary-content"><i class="material-icons delete-icon red-text text-darken-2">delete</i></a></div></li>';
+            } else {
+                nameList.innerHTML += '<li class="collection-item brown lighten-5"><div><span class="name-text absent-text">' + student.name + '</span><a id="' + i + '" href="#" class="secondary-content"><i class="material-icons delete-icon red-text text-darken-2">delete</i></a></div></li>';
+            }
+        } 
+        // the following functions lazy load transitions
+        $("#startContent").addClass("animated fadeOut");
+        $('#saveListButtonListItem').addClass('no-display');
+        $('#updateListButtonListItem').removeClass('no-display');
+
+        setTimeout(function() {
+            $("#startContent").addClass("no-display");
+            $("#selectorContent").removeClass("no-display").addClass("animated fadeIn");
+            $("footer").removeClass("no-display").addClass("animated slideInUp");
+        }, 100);
+
+        setTimeout(function() {
+           $('#editTapTarget').tapTarget('open');
+        }, 1500);
+
+        setTimeout(function() {
+           $('#editTapTarget').tapTarget('close');
+            $('.button-collapse').sideNav('hide');
+        }, 5500);
+
+        setTimeout(function() {
+           $('#selectTapTarget').tapTarget('open');
+        }, 6500);
+        
     },
     loadFromLocalStorage: function() {
         this.displayLoadedStudents();
@@ -344,3 +403,12 @@ var view = {
 };
 // calls the event listener method
 view.setUpEventListeners();
+
+// Tabletop - Google Sheet Integration
+function init(sheetURL) {
+  Tabletop.init( { key: sheetURL,
+                   callback: function(data, tabletop) { 
+                       studentList.processSheetData(data);
+                   },
+                   simpleSheet: true } )
+}

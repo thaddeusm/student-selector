@@ -12,6 +12,9 @@
 </head>
 <body>
 	<header class="page-header transparent">
+	    <div class="center">
+	        <a id="brandingButton" href="https://www.teacherspayteachers.com/Store/Virtually-Real" target="_blank" class="btn-flat">Virtually Real</a>
+	    </div>
 	</header>
 	<main id="start" class="valign-wrapper">
 		<ul id="slide-out" class="side-nav">
@@ -43,15 +46,27 @@
 			</div>
 			<div class="row">
 				<div class="col s12 center-align">
-					<a id="initialListButton" data-activates="slide-out" onclick="handler.initialListBuilder()" class="no-display button-collapse waves-effect waves-light btn-large teal">Create Class List</a>
-					<div id="localStoragePresentOption" class="no-display">
+                    <div id="localStoragePresentOption" class="no-display">
 					    <a id="useStoredListButton" data-activates="slide-out" onclick="handler.loadFromLocalStorage()" class="button-collapse waves-effect waves-light btn-large teal">Use Previous List</a>
-					    <h5 id="or">or</h5>
-					    <a id="initialListButton" data-activates="slide-out" onclick="handler.initialListBuilder()" class="button-collapse waves-effect waves-light btn-large teal">Create Class List</a>
 					</div>
+				    <div id="initialOptions" class="no-display">
+				        <a id="initialListButton" data-activates="slide-out" onclick="handler.initialListBuilder()" class="button-collapse waves-effect waves-light btn-large teal">Create Class List</a>
+				        <h5 id="or">or</h5>
+					    <a href="#sheetModal" class="modal-trigger btn-flat" id="googleSheetsButton">import from Google Sheets</a>
+                    </div>
+					
 				</div>
 			</div>
 		</div>
+		<div id="sheetModal" class="modal bottom-sheet">
+            <div class="modal-content modal-format brown">
+              <h5 class="brown-text text-lighten-5">Insert your Google Sheet share link | <a href="https://www.youtube.com/watch?v=VurzWe-UHW0&feature=youtu.be" target="_blank" class="teal-text text-lighten-2">?</a></h5>
+              <div class="input-field inline">
+                  <input type="text" placeholder="https://docs.google.com..." id="sheetURLInput" size="60">
+              </div>
+               | <a onclick="handler.sheetImport()" id="sheetURLInputButton" class="modal-action modal-close btn brown lighten-5 teal-text">Import</a>
+            </div>
+        </div>
 		<div class="container no-display" id="selectorContent">
 			<div class="row">
 				<div id="nameArea" class="col s12 center-align">
@@ -65,10 +80,10 @@
 			<div class="row">
 			    <div class="col s6">
                     <div id="selectStudentWrapper" class="fixed-action-btn">
-                        <a id="selectStudent" onclick="handler.startSelector()" class="btn btn-large btn-floating waves-effect waves-light teal"><i class="material-icons brown-text text-lighten-5">polymer</i></a>
+                        <a id="selectStudent" onclick="handler.startSelector()" class="btn btn-large btn-floating waves-effect waves-light teal"><i id="selectorIcon" class="material-icons brown-text text-lighten-5">polymer</i></a>
                     </div>
 			        <div id="selectTapTarget" class="tap-target teal" data-activates="selectStudent">
-                        <div class="tap-target-content white-text">
+                        <div id="tapTargetContent1" class="tap-target-content white-text">
                           <h5>Start Selector</h5>
                           <p>Select a random student.</p>
                         </div>
@@ -76,10 +91,10 @@
 			    </div>
 				<div class="col s6">
                     <div id="editListWrapper" class="fixed-action-btn">
-                        <a id="editList" data-activates="slide-out" class="button-collapse btn btn-large btn-floating waves-effect waves-light teal"><i class="brown-text text-lighten-5 material-icons">toc</i></a>
+                        <a id="editList" data-activates="slide-out" class="button-collapse btn btn-large btn-floating waves-effect waves-light teal"><i id="listIcon" class="brown-text text-lighten-5 material-icons">toc</i></a>
                     </div>
                     <div id="editTapTarget" class="tap-target teal" data-activates="editList">
-                        <div class="tap-target-content white-text">
+                        <div id="tapTargetContent2" class="tap-target-content white-text">
                           <h5>Edit Student List</h5>
                           <p>Make changes to your student list.</p>
                         </div>
@@ -90,6 +105,7 @@
 	</footer>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.2/tabletop.min.js"></script>
 	<script type="text/javascript" src="title_animation.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 </body>
